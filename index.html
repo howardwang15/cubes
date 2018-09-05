@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cubes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src='http://mrdoob.github.com/three.js/build/three.min.js'></script>
+    </head>
+    <body>
+        <div class='container-fluid'>
+            <div id='canvas'></div>
+        </div>        
+        <script>
+            var scene, camera, renderer, cube;
+            var container = document.getElementById('canvas');
+
+            init();
+            animate();
+            function init() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setClearColor('rgb(233, 236, 239)');
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                let light = new THREE.DirectionalLight(0xFFFFFF, 0.8);
+                scene.add(light);
+                
+                let geometry = new THREE.BoxGeometry(5, 5, 5);
+                let material = new THREE.MeshPhysicalMaterial({ color: 0x70807C, reflectivity: 0.8, clearCoat: 0.5 });
+                cube = new THREE.Mesh( geometry, material );
+                cube.position.set(0, 0, 0);
+                camera.position.set(0, 0, 40);
+                scene.add(cube);
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+
+            container.appendChild(renderer.domElement);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "cubes",
+  "version": "1.0.0",
+  "description": "just some aesthetic cubes to brighten your day",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/howardwang15/cubes.git"
+  },
+  "author": "Howard Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/howardwang15/cubes/issues"
+  },
+  "homepage": "https://github.com/howardwang15/cubes#readme"
+}
